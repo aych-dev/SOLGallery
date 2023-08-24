@@ -11,7 +11,7 @@ function App() {
         <div className='bg-red-300 h-14'>
           <NavBar />
         </div>
-        <div className='bg-yellow-300 h-28 '>
+        <div className='bg-yellow-300 h-36 '>
           <WalletInput />
         </div>
         <div className='bg-green-300 h-screen'>
