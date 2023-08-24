@@ -17,7 +17,7 @@ app.get('/', async (req, res) => {
       id: 'my-id',
       method: 'getAssetsByOwner',
       params: {
-        ownerAddress: 'H1k6jB8eusq3WUzDjpkd1XhxgcR8crEd3wug3ysHKxUB',
+        ownerAddress: SolanaWallet,
         page: 1,
         limit: 1000,
       },
