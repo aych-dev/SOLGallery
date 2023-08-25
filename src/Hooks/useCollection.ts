@@ -9,16 +9,16 @@ interface NftImage {
   uri: string;
 }
 
-const useCollection = (solanaWallet: string) => {
+const useCollection = (solanaAddress: string) => {
   const [testData, setTestData] = useState<CollectionData[]>([]);
-  const ImageData: NftImage[] = [];
+  const imageData: NftImage[] = [];
 
   useEffect(() => {
     const getCollection = async () => {
       try {
         const { data } = await axios.get(`http://localhost:8000/`, {
           params: {
-            ownerAddress: solanaWallet,
+            solanaAddress: solanaAddress,
           },
         });
         setTestData(data.items);
@@ -27,13 +27,15 @@ const useCollection = (solanaWallet: string) => {
       }
     };
     getCollection();
-  }, [solanaWallet]);
+  }, [solanaAddress]);
 
-  testData.map((data) => {
-    ImageData.push(data.content.files[0]);
-  });
+  if (testData) {
+    testData.map((data) => {
+      return imageData.push(data.content.files[0]);
+    });
+  }
 
-  return { testData, ImageData };
+  return { imageData };
 };
 
 export default useCollection;
