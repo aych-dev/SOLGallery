@@ -5,7 +5,7 @@ interface CollectionData {
   content: { files: NftImage[] };
 }
 
-interface NftImage {
+export interface NftImage {
   uri: string;
 }
 
