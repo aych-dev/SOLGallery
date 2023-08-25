@@ -5,9 +5,12 @@ interface Props {
 }
 
 const Gallery = ({ imageData }: Props) => {
+  const imageElement = imageData.map((data) => {
+    return <img src={data.uri} alt='NFT' />;
+  });
   return (
     <div>
-      <img src='' alt='NFT' />
+      {imageElement}
       <div>Gallery</div>
     </div>
   );
