@@ -35,7 +35,7 @@ const useCollection = (solanaAddress: string) => {
     });
   }
 
-  return { imageData };
+  return imageData;
 };
 
 export default useCollection;

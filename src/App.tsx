@@ -1,7 +1,5 @@
 import './App.css';
-import Gallery from './Components/Gallery';
 import NavBar from './Components/NavBar';
-import WalletInput from './Components/WalletInput';
 import Footer from './Components/Footer';
 import MainContainer from './Components/MainContainer';
 
