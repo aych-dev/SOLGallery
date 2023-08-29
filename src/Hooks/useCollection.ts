@@ -5,17 +5,21 @@ interface CollectionData {
   id: string;
   content: {
     files: [{ uri: string }];
+    metadata: { name: string };
   };
 }
 
 export interface NftImage {
   uri: string;
   id: string;
+  name: string;
 }
 
 const useCollection = (solanaAddress: string) => {
   const [testData, setTestData] = useState<CollectionData[]>([]);
   const imageData: NftImage[] = [];
+
+  console.log(testData);
 
   useEffect(() => {
     const getCollection = async () => {
@@ -38,6 +42,7 @@ const useCollection = (solanaAddress: string) => {
       imageData.push({
         id: data.id,
         uri: data.content.files[0].uri,
+        name: data.content.metadata.name,
       });
     });
   }

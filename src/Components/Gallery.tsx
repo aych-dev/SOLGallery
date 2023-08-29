@@ -5,18 +5,22 @@ interface Props {
 }
 
 const Gallery = ({ imageData }: Props) => {
-  console.log(imageData);
-
   const imageElement = imageData.map((data) => {
     return (
-      <div className='flex items-center justify-center p-2'>
-        <img
-          key={data.id}
-          className='h-32
-        '
-          src={data.uri}
-          alt='NFT'
-        />
+      <div key={data.id} className='flex items-center justify-center p-2'>
+        <div className='grid-cols-2'>
+          <div className='flex items-center justify-center'>
+            <img
+              className='h-36
+            '
+              src={data.uri}
+              alt='NFT'
+            />
+          </div>
+          <div className='flex items-center justify-center font-bold font-serif  '>
+            <p>{data.name}</p>
+          </div>
+        </div>
       </div>
     );
   });

@@ -35,7 +35,7 @@ const WalletInput = () => {
           </div>
         </Box>
       </div>
-      <div className='bg-red-300 mt-3'>
+      <div className='bg-whitesmoke mt-3'>
         <Gallery imageData={imageData} />
       </div>
     </>
