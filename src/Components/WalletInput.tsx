@@ -17,7 +17,7 @@ const WalletInput = () => {
   };
   return (
     <>
-      <div className='flex items-center justify-center'>
+      <div className='flex items-center justify-center mt-3'>
         <Box component='form' autoComplete='off' onSubmit={handleSubmit}>
           <div className='mt-5 '>
             <TextField
@@ -35,7 +35,7 @@ const WalletInput = () => {
           </div>
         </Box>
       </div>
-      <div>
+      <div className='bg-red-300 mt-3'>
         <Gallery imageData={imageData} />
       </div>
     </>

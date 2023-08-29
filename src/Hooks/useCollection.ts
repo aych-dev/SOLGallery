@@ -16,7 +16,6 @@ export interface NftImage {
 const useCollection = (solanaAddress: string) => {
   const [testData, setTestData] = useState<CollectionData[]>([]);
   const imageData: NftImage[] = [];
-  console.log(testData);
 
   useEffect(() => {
     const getCollection = async () => {
