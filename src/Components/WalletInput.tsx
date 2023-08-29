@@ -7,7 +7,7 @@ const WalletInput = () => {
   const [solanaAddress, setSolanaAddress] = useState<string>('');
 
   const imageData = useCollection(solanaAddress);
-  console.log(imageData);
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);

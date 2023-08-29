@@ -8,6 +8,7 @@ const Gallery = ({ imageData }: Props) => {
   const imageElement = imageData.map((data) => {
     return (
       <img
+        key={data.id}
         className='h-32
         '
         src={data.uri}

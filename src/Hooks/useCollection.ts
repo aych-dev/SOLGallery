@@ -2,16 +2,21 @@ import axios, { AxiosError } from 'axios';
 import { useEffect, useState } from 'react';
 
 interface CollectionData {
-  content: { files: NftImage[] };
+  id: string;
+  content: {
+    files: [{ uri: string }];
+  };
 }
 
 export interface NftImage {
   uri: string;
+  id: string;
 }
 
 const useCollection = (solanaAddress: string) => {
   const [testData, setTestData] = useState<CollectionData[]>([]);
   const imageData: NftImage[] = [];
+  console.log(testData);
 
   useEffect(() => {
     const getCollection = async () => {
@@ -30,8 +35,11 @@ const useCollection = (solanaAddress: string) => {
   }, [solanaAddress]);
 
   if (testData) {
-    testData.map((data) => {
-      return imageData.push(data.content.files[0]);
+    testData.forEach((data) => {
+      imageData.push({
+        id: data.id,
+        uri: data.content.files[0].uri,
+      });
     });
   }
 
