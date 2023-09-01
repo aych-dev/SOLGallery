@@ -10,23 +10,38 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/', async (req, res) => {
-  try {
-    const url = `https://mainnet.helius-rpc.com/?api-key=${process.env.APIKEY}`;
-    const { data } = await axios.post(url, {
-      jsonrpc: '2.0',
-      id: 'my-id',
-      method: 'getAssetsByOwner',
-      params: {
-        ownerAddress: req.query.solanaAddress,
-        page: 1,
-        limit: 1000,
-      },
-    });
-    res.json(data.result);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'An error occurred' });
+  let page = 1;
+  let assetList = [];
+  console.log(assetList);
+
+  while (page) {
+    try {
+      const url = `https://rpc.helius.xyz/?api-key=${process.env.API_KEY}`;
+      const { data } = await axios.post(url, {
+        jsonrpc: '2.0',
+        id: 'my-id',
+        method: 'getAssetsByOwner',
+        params: {
+          ownerAddress: req.query.ownerAddress,
+          page: page,
+          limit: 1000,
+        },
+      });
+      const { result } = await data;
+
+      assetList.push(...result.items);
+
+      if (result.total !== 1000) {
+        page = false;
+      } else {
+        page++;
+      }
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({ error: 'Internal server error!!' });
+    }
   }
+  res.json(assetList);
 });
 
 app.listen(PORT, () => console.log(`Server is running on ${PORT}`));

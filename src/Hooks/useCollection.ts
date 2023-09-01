@@ -19,22 +19,22 @@ const useCollection = (solanaAddress: string) => {
   const [testData, setTestData] = useState<CollectionData[]>([]);
   const imageData: NftImage[] = [];
 
-  console.log(testData);
-
   useEffect(() => {
     const getCollection = async () => {
       try {
         const { data } = await axios.get(`http://localhost:8000/`, {
           params: {
-            solanaAddress: solanaAddress,
+            ownerAddress: solanaAddress,
           },
         });
-        setTestData(data.items);
+        setTestData(data);
       } catch (err) {
         console.error((err as AxiosError).message);
       }
     };
-    getCollection();
+    if (solanaAddress) {
+      getCollection();
+    }
   }, [solanaAddress]);
 
   if (testData) {
