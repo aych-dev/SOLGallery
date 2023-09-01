@@ -22,7 +22,11 @@ const useCollection = (solanaAddress: string) => {
   useEffect(() => {
     const getCollection = async () => {
       try {
-        const { data } = await axios.get(`http://localhost:8000/`);
+        const { data } = await axios.get(`http://localhost:8000/`, {
+          params: {
+            ownerAddress: solanaAddress,
+          },
+        });
         setTestData(data);
       } catch (err) {
         console.error((err as AxiosError).message);
