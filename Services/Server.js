@@ -12,7 +12,6 @@ app.use(express.json());
 app.get('/', async (req, res) => {
   let page = 1;
   let assetList = [];
-  console.log(assetList);
 
   while (page) {
     try {
@@ -28,6 +27,7 @@ app.get('/', async (req, res) => {
         },
       });
       const { result } = await data;
+      console.log(result);
 
       assetList.push(...result.items);
 

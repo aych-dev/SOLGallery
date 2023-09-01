@@ -4,13 +4,13 @@ import { useEffect, useState } from 'react';
 interface CollectionData {
   id: string;
   content: {
-    files: [{ uri: string }];
+    links: { image: string };
     metadata: { name: string };
   };
 }
 
 export interface NftImage {
-  uri: string;
+  image: string;
   id: string;
   name: string;
 }
@@ -22,11 +22,7 @@ const useCollection = (solanaAddress: string) => {
   useEffect(() => {
     const getCollection = async () => {
       try {
-        const { data } = await axios.get(`http://localhost:8000/`, {
-          params: {
-            ownerAddress: solanaAddress,
-          },
-        });
+        const { data } = await axios.get(`http://localhost:8000/`);
         setTestData(data);
       } catch (err) {
         console.error((err as AxiosError).message);
@@ -41,13 +37,13 @@ const useCollection = (solanaAddress: string) => {
     testData.forEach((data) => {
       imageData.push({
         id: data.id,
-        uri: data.content.files[0].uri,
+        image: data.content.links.image,
         name: data.content.metadata.name,
       });
     });
   }
 
-  return imageData;
+  return { imageData, testData };
 };
 
 export default useCollection;

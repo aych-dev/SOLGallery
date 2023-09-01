@@ -2,9 +2,10 @@ import { NftImage } from '../Hooks/useCollection';
 
 interface Props {
   imageData: NftImage[];
+  testData: any;
 }
 
-const Gallery = ({ imageData }: Props) => {
+const Gallery = ({ imageData, testData }: Props) => {
   const imageElement = imageData.map((data) => {
     return (
       <div key={data.id} className='flex items-center justify-center p-2'>
@@ -13,7 +14,7 @@ const Gallery = ({ imageData }: Props) => {
             <img
               className='h-36
             '
-              src={data.uri}
+              src={data.image}
               alt='NFT'
             />
           </div>
@@ -24,6 +25,7 @@ const Gallery = ({ imageData }: Props) => {
       </div>
     );
   });
+
   return <div className='grid grid-cols-4'>{imageElement}</div>;
 };
 
