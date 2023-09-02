@@ -6,7 +6,7 @@ import Gallery from './Gallery';
 const WalletInput = () => {
   const [solanaAddress, setSolanaAddress] = useState<string>('');
 
-  const { imageData, testData } = useCollection(solanaAddress);
+  const imageData = useCollection(solanaAddress);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -36,7 +36,7 @@ const WalletInput = () => {
         </Box>
       </div>
       <div className='bg-whitesmoke mt-3'>
-        <Gallery imageData={imageData} testData={testData} />
+        <Gallery imageData={imageData} />
       </div>
     </>
   );
