@@ -1,3 +1,4 @@
+import { Card, CardContent, CardMedia, Typography } from '@mui/material';
 import { NftImage } from '../Hooks/useCollection';
 
 interface Props {
@@ -5,26 +6,29 @@ interface Props {
 }
 
 const Gallery = ({ imageData }: Props) => {
-  const imageElement = imageData.map((data) => {
-    return (
-      <div key={data.id} className='flex items-center justify-center p-2'>
-        <div className='grid-cols-2'>
-          <div className='flex items-center justify-center '>
-            <img
-              className='h-36 rounded-xl border border-purple-500 '
-              src={data.image}
-              alt='NFT'
-            />
-          </div>
-          <div className='flex items-center justify-center font-bold font-serif   '>
-            <p>{data.name}</p>
-          </div>
-        </div>
-      </div>
-    );
-  });
-
-  return <div className='grid grid-cols-4'>{imageElement}</div>;
+  return (
+    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
+      {imageData.map((data) => (
+        <Card key={data.id}>
+          <CardMedia
+            component='img'
+            alt={data.id}
+            height='900'
+            image={data.image}
+          />
+          <CardContent>
+            <Typography
+              variant='subtitle1'
+              component='div'
+              className='flex items-center justify-center'
+            >
+              {data.name}
+            </Typography>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  );
 };
 
 export default Gallery;

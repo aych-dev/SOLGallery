@@ -7,17 +7,20 @@ interface CollectionData {
     links: { image: string };
     metadata: { name: string };
   };
+  grouping: [{ group_value: string }];
 }
 
 export interface NftImage {
   image: string;
   id: string;
   name: string;
+  collection: string[];
 }
 
 const useCollection = (solanaAddress: string) => {
   const [testData, setTestData] = useState<CollectionData[]>([]);
   const imageData: NftImage[] = [];
+  console.log(imageData);
 
   useEffect(() => {
     const getCollection = async () => {
@@ -43,6 +46,9 @@ const useCollection = (solanaAddress: string) => {
         id: data.id,
         image: data.content.links.image,
         name: data.content.metadata.name,
+        collection: data.grouping.map((group) => {
+          return group.group_value;
+        }),
       });
     });
   }
