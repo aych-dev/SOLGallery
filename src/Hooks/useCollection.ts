@@ -14,7 +14,7 @@ export interface NftImage {
   image: string;
   id: string;
   name: string;
-  collection: string[];
+  collection: string | null;
 }
 
 const useCollection = (solanaAddress: string) => {
@@ -42,14 +42,21 @@ const useCollection = (solanaAddress: string) => {
 
   if (testData) {
     testData.forEach((data) => {
-      imageData.push({
-        id: data.id,
-        image: data.content.links.image,
-        name: data.content.metadata.name,
-        collection: data.grouping.map((group) => {
-          return group.group_value;
-        }),
-      });
+      if (data.grouping[0]) {
+        imageData.push({
+          id: data.id,
+          image: data.content.links.image,
+          name: data.content.metadata.name,
+          collection: data.grouping[0].group_value,
+        });
+      } else {
+        imageData.push({
+          id: data.id,
+          image: data.content.links.image,
+          name: data.content.metadata.name,
+          collection: 'none',
+        });
+      }
     });
   }
 
