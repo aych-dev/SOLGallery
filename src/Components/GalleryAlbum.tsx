@@ -15,7 +15,7 @@ const GalleryAlbum = ({ imageData }: Props) => {
         alt={`Album ${collection.id}`}
         height='140'
         image={
-          imageData[0].id === imageData[0].id ? imageData[0].image : 'blank'
+          imageData[0].id === imageData[0].id ? imageData[index].image : 'blank'
         } // Display the first photo as the album cover
       />
       <CardContent>
@@ -28,7 +28,7 @@ const GalleryAlbum = ({ imageData }: Props) => {
 
   return (
     <div>
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
+      <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4'>
         {albumElement}
       </div>
     </div>
