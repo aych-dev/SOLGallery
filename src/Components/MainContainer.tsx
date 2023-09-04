@@ -1,9 +1,14 @@
-import WalletInput from './WalletInput';
+import Gallery from './Gallery';
+import { NftImage } from '../Hooks/useCollection';
 
-const MainContainer = () => {
+interface Props {
+  imageData: NftImage[];
+}
+
+const MainContainer = ({ imageData }: Props) => {
   return (
     <div>
-      <WalletInput />
+      <Gallery imageData={imageData} />
     </div>
   );
 };

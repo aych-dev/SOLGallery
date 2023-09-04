@@ -3,6 +3,9 @@ import Footer from './Components/Footer';
 import MainContainer from './Components/MainContainer';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
+import WalletInput from './Components/WalletInput';
+import useCollection from './Hooks/useCollection';
+import { useState } from 'react';
 
 const darkTheme = createTheme({
   palette: {
@@ -11,6 +14,16 @@ const darkTheme = createTheme({
 });
 
 function App() {
+  const [solanaAddress, setSolanaAddress] = useState<string>('');
+  const imageData = useCollection(solanaAddress);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+
+    const newSolanaAddress = formData.get('solanaAddressInput') as string;
+    setSolanaAddress(newSolanaAddress);
+  };
   return (
     <>
       <ThemeProvider theme={darkTheme}>
@@ -20,7 +33,15 @@ function App() {
             <NavBar />
           </div>
           <div>
-            <MainContainer />
+            <div>
+              <WalletInput
+                solanaAddress={solanaAddress}
+                handleSubmit={handleSubmit}
+              />
+            </div>
+            <div>
+              <MainContainer imageData={imageData} />
+            </div>
           </div>
           <div>
             <Footer />
