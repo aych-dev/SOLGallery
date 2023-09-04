@@ -15,8 +15,7 @@ const darkTheme = createTheme({
 
 function App() {
   const [solanaAddress, setSolanaAddress] = useState<string>('');
-  const { imageData, nftCollection } = useCollection(solanaAddress);
-  console.log(imageData);
+  const imageData = useCollection(solanaAddress);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -41,10 +40,7 @@ function App() {
               />
             </div>
             <div>
-              <MainContainer
-                nftCollection={nftCollection}
-                imageData={imageData}
-              />
+              <MainContainer imageData={imageData} />
             </div>
           </div>
           <div>

@@ -13,9 +13,7 @@ const MainContainer = ({ imageData, nftCollection }: Props) => {
       <div>
         <GalleryAlbum nftCollection={nftCollection} imageData={imageData} />
       </div>
-      <div>
-        <Gallery imageData={imageData} />
-      </div>
+      <div>{/* <Gallery imageData={imageData} /> */}</div>
     </div>
   );
 };
