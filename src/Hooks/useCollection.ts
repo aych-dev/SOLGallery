@@ -21,7 +21,6 @@ const useCollection = (solanaAddress: string) => {
   const [testData, setTestData] = useState<CollectionData[]>([]);
   const imageData: NftImage[] = [];
   const nftCollection: string[] = [];
-  console.log(nftCollection);
 
   useEffect(() => {
     const getCollection = async () => {
@@ -71,7 +70,7 @@ const useCollection = (solanaAddress: string) => {
     });
   }
 
-  return imageData;
+  return { imageData, nftCollection };
 };
 
 export default useCollection;

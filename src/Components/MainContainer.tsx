@@ -1,10 +1,10 @@
 import Gallery from './Gallery';
-import { NftImage, NftCollection } from '../Hooks/useCollection';
+import { NftImage } from '../Hooks/useCollection';
 import GalleryAlbum from './GalleryAlbum';
 
 interface Props {
   imageData: NftImage[];
-  nftCollection: NftCollection[];
+  nftCollection: string[];
 }
 
 const MainContainer = ({ imageData, nftCollection }: Props) => {

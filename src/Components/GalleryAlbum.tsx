@@ -3,9 +3,12 @@ import { Card, CardContent, CardMedia, Typography } from '@mui/material';
 
 interface Props {
   imageData: NftImage[];
+  nftCollection: string[];
 }
 
-const GalleryAlbum = ({ imageData }: Props) => {
+const GalleryAlbum = ({ imageData, nftCollection }: Props) => {
+  console.log(nftCollection);
+
   const albumElement = imageData.map((collection, index) => (
     <Card key={collection.id} onClick={() => onAlbumClick(album.photos)}>
       <CardMedia
