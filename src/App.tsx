@@ -34,10 +34,7 @@ function App() {
           </div>
           <div>
             <div>
-              <WalletInput
-                solanaAddress={solanaAddress}
-                handleSubmit={handleSubmit}
-              />
+              <WalletInput handleSubmit={handleSubmit} />
             </div>
             <div>
               <MainContainer

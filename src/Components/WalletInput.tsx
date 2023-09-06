@@ -2,10 +2,9 @@ import { Box, TextField, Button } from '@mui/material';
 
 interface Props {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-  solanaAddress: string;
 }
 
-const WalletInput = ({ handleSubmit, solanaAddress }: Props) => {
+const WalletInput = ({ handleSubmit }: Props) => {
   return (
     <>
       <div className='flex items-center justify-center mt-3'>
