@@ -17,10 +17,17 @@ export interface NftImage {
   collection: string | null;
 }
 
+export interface nftCollections {
+  id: string;
+  collection: string | null;
+  image: string;
+}
+
 const useCollection = (solanaAddress: string) => {
   const [testData, setTestData] = useState<CollectionData[]>([]);
   const imageData: NftImage[] = [];
-  const nftCollection: string[] = [];
+  const nftCollection: nftCollections[] = [];
+  console.log(nftCollection);
 
   useEffect(() => {
     const getCollection = async () => {
@@ -49,10 +56,18 @@ const useCollection = (solanaAddress: string) => {
           name: data.content.metadata.name,
           collection: data.grouping[0].group_value,
         });
-        if (nftCollection.includes(data.grouping[0].group_value)) {
+        if (
+          nftCollection.some(
+            (obj) => obj.collection === data.grouping[0].group_value
+          )
+        ) {
           return;
         } else {
-          nftCollection.push(data.grouping[0].group_value);
+          nftCollection.push({
+            collection: data.grouping[0].group_value,
+            id: data.id,
+            image: data.content.links.image,
+          });
         }
       } else {
         imageData.push({
@@ -61,10 +76,14 @@ const useCollection = (solanaAddress: string) => {
           name: data.content.metadata.name,
           collection: 'none',
         });
-        if (nftCollection.includes('none')) {
+        if (nftCollection.some((obj) => obj.collection === 'none')) {
           return;
         } else {
-          nftCollection.push('none');
+          nftCollection.push({
+            collection: 'none',
+            id: data.id,
+            image: 'none',
+          });
         }
       }
     });

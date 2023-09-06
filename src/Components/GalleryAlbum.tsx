@@ -1,16 +1,14 @@
-import { NftImage } from '../Hooks/useCollection';
+import { NftImage, nftCollections } from '../Hooks/useCollection';
 import { Card, CardContent, CardMedia, Typography } from '@mui/material';
 
 interface Props {
   imageData: NftImage[];
-  nftCollection: string[];
+  nftCollection: nftCollections[];
 }
 
 const GalleryAlbum = ({ imageData, nftCollection }: Props) => {
-  console.log(nftCollection);
-
-  const albumElement = imageData.map((collection, index) => (
-    <Card key={collection.id} onClick={() => onAlbumClick(album.photos)}>
+  const albumElement = nftCollection.map((collection, index) => (
+    <Card key={collection.id}>
       <CardMedia
         component='img'
         alt={`Album ${collection.id}`}
