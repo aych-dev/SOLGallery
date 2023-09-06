@@ -6,8 +6,6 @@ interface Props {
 }
 
 const GalleryAlbum = ({ imageData }: Props) => {
-  console.log(imageData);
-
   const albumElement = imageData.map((collection, index) => (
     <Card key={collection.id} onClick={() => onAlbumClick(album.photos)}>
       <CardMedia

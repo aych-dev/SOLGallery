@@ -20,7 +20,8 @@ export interface NftImage {
 const useCollection = (solanaAddress: string) => {
   const [testData, setTestData] = useState<CollectionData[]>([]);
   const imageData: NftImage[] = [];
-  console.log(testData);
+  const nftCollection: string[] = [];
+  console.log(nftCollection);
 
   useEffect(() => {
     const getCollection = async () => {
@@ -49,6 +50,11 @@ const useCollection = (solanaAddress: string) => {
           name: data.content.metadata.name,
           collection: data.grouping[0].group_value,
         });
+        if (nftCollection.includes(data.grouping[0].group_value)) {
+          return;
+        } else {
+          nftCollection.push(data.grouping[0].group_value);
+        }
       } else {
         imageData.push({
           id: data.id,
@@ -56,6 +62,11 @@ const useCollection = (solanaAddress: string) => {
           name: data.content.metadata.name,
           collection: 'none',
         });
+        if (nftCollection.includes('none')) {
+          return;
+        } else {
+          nftCollection.push('none');
+        }
       }
     });
   }
