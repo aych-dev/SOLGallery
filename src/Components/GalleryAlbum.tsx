@@ -1,5 +1,6 @@
 import { NftImage, nftCollections } from '../Hooks/useCollection';
 import { Card, CardContent, CardMedia, Typography } from '@mui/material';
+import noImage from '../Images/noImage.png';
 
 interface Props {
   imageData: NftImage[];
@@ -12,9 +13,11 @@ const GalleryAlbum = ({ imageData, nftCollection }: Props) => {
       <CardMedia
         component='img'
         alt={`Album ${collection.id}`}
-        height='140'
+        height='148'
         image={
-          imageData[0].id === imageData[0].id ? imageData[index].image : 'blank'
+          collection.collection === imageData[index].collection
+            ? collection.image
+            : noImage
         } // Display the first photo as the album cover
       />
       <CardContent>
