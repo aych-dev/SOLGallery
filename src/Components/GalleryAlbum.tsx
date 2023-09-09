@@ -1,6 +1,7 @@
 import { NftImage, nftCollections } from '../Hooks/useCollection';
 import { Card, CardContent, CardMedia, Typography } from '@mui/material';
 import noImage from '../Images/noImage.png';
+import React, { useState } from 'react';
 
 interface Props {
   imageData: NftImage[];
@@ -8,25 +9,27 @@ interface Props {
 }
 
 const GalleryAlbum = ({ imageData, nftCollection }: Props) => {
-  const albumElement = nftCollection.map((collection, index) => (
-    <Card key={collection.id}>
-      <CardMedia
-        component='img'
-        alt={`Album ${collection.id}`}
-        height='148'
-        image={
-          collection.collection === imageData[index].collection
-            ? collection.image
-            : noImage
-        } // Display the first photo as the album cover
-      />
-      <CardContent>
-        <Typography variant='subtitle1' component='div'>
-          {collection.id}
-        </Typography>
-      </CardContent>
-    </Card>
-  ));
+  const albumElement = nftCollection.map((data, index) => {
+    const imageIncluded = imageData.some(
+      (obj) => obj.collection === data.collection
+    );
+
+    return (
+      <Card key={data.id}>
+        <CardMedia
+          component='img'
+          alt={`Album ${data.id}`}
+          height='148'
+          image={imageIncluded ? data.image : noImage}
+        />
+        <CardContent>
+          <Typography variant='subtitle1' component='div'>
+            {data.image}
+          </Typography>
+        </CardContent>
+      </Card>
+    );
+  });
 
   return (
     <div>
