@@ -11,9 +11,11 @@ interface Props {
 
 const GalleryAlbum = ({ imageData, nftCollection }: Props) => {
   const [albumSelected, setAlbumSelected] = useState<boolean>(false);
+  const [testing, setTesting] = useState<string | null>('');
 
-  const handleClick = () => {
+  const handleClick = (collection: string | null) => {
     setAlbumSelected(!albumSelected);
+    setTesting(collection);
   };
 
   const albumElement = nftCollection.map((data, index) => {
@@ -28,7 +30,7 @@ const GalleryAlbum = ({ imageData, nftCollection }: Props) => {
       <Card key={data.id}>
         <CardMedia
           className='cursor-pointer'
-          onClick={handleClick}
+          onClick={() => handleClick(data.collection)}
           component='img'
           alt={`Album ${index}`}
           height='148'
@@ -46,14 +48,10 @@ const GalleryAlbum = ({ imageData, nftCollection }: Props) => {
   return (
     <>
       {albumSelected ? (
-        <div>
-          <Gallery imageData={imageData} />
-        </div>
+        <Gallery imageData={imageData} />
       ) : (
-        <div>
-          <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4'>
-            {albumElement}
-          </div>
+        <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4'>
+          {albumElement}
         </div>
       )}
     </>
