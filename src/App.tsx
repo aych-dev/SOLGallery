@@ -28,7 +28,7 @@ function App() {
   };
 
   const returnToHomePage = () => {
-    setAlbumSelected(!albumSelected);
+    setAlbumSelected(false);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
