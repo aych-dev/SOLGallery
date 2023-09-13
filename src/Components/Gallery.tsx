@@ -3,12 +3,13 @@ import { NftImage } from '../Hooks/useCollection';
 
 interface Props {
   imageData: NftImage[];
+  selectedCollection: string | null;
 }
 
-const Gallery = ({ imageData }: Props) => {
-  return (
-    <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4'>
-      {imageData.map((data) => (
+const Gallery = ({ imageData, selectedCollection }: Props) => {
+  const galleryElement = imageData.map((data) => {
+    if (selectedCollection === data.collection) {
+      return (
         <Card key={data.id}>
           <CardMedia
             component='img'
@@ -26,7 +27,13 @@ const Gallery = ({ imageData }: Props) => {
             </Typography>
           </CardContent>
         </Card>
-      ))}
+      );
+    }
+  });
+
+  return (
+    <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4'>
+      {galleryElement}
     </div>
   );
 };

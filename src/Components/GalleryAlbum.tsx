@@ -11,11 +11,13 @@ interface Props {
 
 const GalleryAlbum = ({ imageData, nftCollection }: Props) => {
   const [albumSelected, setAlbumSelected] = useState<boolean>(false);
-  const [testing, setTesting] = useState<string | null>('');
+  const [selectedCollection, setSelectedCollection] = useState<string | null>(
+    ''
+  );
 
   const handleClick = (collection: string | null) => {
     setAlbumSelected(!albumSelected);
-    setTesting(collection);
+    setSelectedCollection(collection);
   };
 
   const albumElement = nftCollection.map((data, index) => {
@@ -48,7 +50,10 @@ const GalleryAlbum = ({ imageData, nftCollection }: Props) => {
   return (
     <>
       {albumSelected ? (
-        <Gallery imageData={imageData} />
+        <Gallery
+          selectedCollection={selectedCollection}
+          imageData={imageData}
+        />
       ) : (
         <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4'>
           {albumElement}
