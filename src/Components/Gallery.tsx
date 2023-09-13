@@ -7,7 +7,7 @@ interface Props {
 
 const Gallery = ({ imageData }: Props) => {
   return (
-    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
+    <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4'>
       {imageData.map((data) => (
         <Card key={data.id}>
           <CardMedia
