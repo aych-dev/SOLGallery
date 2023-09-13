@@ -2,24 +2,22 @@ import { NftImage, nftCollections } from '../Hooks/useCollection';
 import { Card, CardContent, CardMedia, Typography } from '@mui/material';
 import noImage from '../Images/noImage.png';
 import Gallery from './Gallery';
-import { useState } from 'react';
 
 interface Props {
   imageData: NftImage[];
   nftCollection: nftCollections[];
+  handleClick: (collection: string | null) => void;
+  albumSelected: boolean;
+  selectedCollection: string | null;
 }
 
-const GalleryAlbum = ({ imageData, nftCollection }: Props) => {
-  const [albumSelected, setAlbumSelected] = useState<boolean>(false);
-  const [selectedCollection, setSelectedCollection] = useState<string | null>(
-    ''
-  );
-
-  const handleClick = (collection: string | null) => {
-    setAlbumSelected(!albumSelected);
-    setSelectedCollection(collection);
-  };
-
+const GalleryAlbum = ({
+  imageData,
+  nftCollection,
+  handleClick,
+  albumSelected,
+  selectedCollection,
+}: Props) => {
   const albumElement = nftCollection.map((data, index) => {
     const imageIncluded = imageData.some(
       (obj) =>

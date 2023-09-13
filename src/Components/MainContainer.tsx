@@ -4,12 +4,27 @@ import GalleryAlbum from './GalleryAlbum';
 interface Props {
   imageData: NftImage[];
   nftCollection: nftCollections[];
+  handleClick: (collection: string | null) => void;
+  albumSelected: boolean;
+  selectedCollection: string | null;
 }
 
-const MainContainer = ({ imageData, nftCollection }: Props) => {
+const MainContainer = ({
+  imageData,
+  nftCollection,
+  handleClick,
+  albumSelected,
+  selectedCollection,
+}: Props) => {
   return (
-    <div>
-      <GalleryAlbum nftCollection={nftCollection} imageData={imageData} />
+    <div className='mt-4'>
+      <GalleryAlbum
+        albumSelected={albumSelected}
+        selectedCollection={selectedCollection}
+        nftCollection={nftCollection}
+        imageData={imageData}
+        handleClick={handleClick}
+      />
     </div>
   );
 };

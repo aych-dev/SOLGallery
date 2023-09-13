@@ -16,6 +16,20 @@ const darkTheme = createTheme({
 function App() {
   const [solanaAddress, setSolanaAddress] = useState<string>('');
   const { imageData, nftCollection } = useCollection(solanaAddress);
+  const [albumSelected, setAlbumSelected] = useState<boolean>(false);
+
+  const [selectedCollection, setSelectedCollection] = useState<string | null>(
+    ''
+  );
+
+  const handleClick = (collection: string | null) => {
+    setAlbumSelected(!albumSelected);
+    setSelectedCollection(collection);
+  };
+
+  const returnToHomePage = () => {
+    setAlbumSelected(!albumSelected);
+  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -24,13 +38,14 @@ function App() {
     const newSolanaAddress = formData.get('solanaAddressInput') as string;
     setSolanaAddress(newSolanaAddress);
   };
+
   return (
     <>
       <ThemeProvider theme={darkTheme}>
         <CssBaseline />
         <div>
           <div>
-            <NavBar />
+            <NavBar returnToHomePage={returnToHomePage} />
           </div>
           <div>
             <div>
@@ -38,6 +53,9 @@ function App() {
             </div>
             <div>
               <MainContainer
+                selectedCollection={selectedCollection}
+                albumSelected={albumSelected}
+                handleClick={(collection) => handleClick(collection)}
                 nftCollection={nftCollection}
                 imageData={imageData}
               />
