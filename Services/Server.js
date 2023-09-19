@@ -27,7 +27,6 @@ app.get('/', async (req, res) => {
         },
       });
       const { result } = await data;
-      console.log(result);
 
       assetList.push(...result.items);
 
@@ -42,6 +41,35 @@ app.get('/', async (req, res) => {
     }
   }
   res.json(assetList);
+});
+
+app.get('/collection-name', async (req, res) => {
+  const mintAccounts = Array.isArray(req.query.mintAccounts)
+    ? req.query.mintAccounts
+    : [req.query.mintAccounts];
+  try {
+    const url = `https://api.helius.xyz/v0/token-metadata?api-key=${process.env.API_KEY}`;
+    const { data } = await axios.post(
+      url,
+      {
+        mintAccounts: mintAccounts, // Use an array for the mintAccounts
+        includeOffChain: true,
+        disableCache: false,
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+
+    const { result } = await data;
+
+    res.json(result);
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: 'Internal server error!!' });
+  }
 });
 
 app.listen(PORT, () => console.log(`Server is running on ${PORT}`));

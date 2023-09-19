@@ -19,7 +19,7 @@ export interface NftImage {
 
 export interface nftCollections {
   id: string;
-  collection: string | null;
+  collection: string;
   image: string;
 }
 

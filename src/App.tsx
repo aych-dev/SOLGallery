@@ -17,7 +17,6 @@ function App() {
   const [solanaAddress, setSolanaAddress] = useState<string>('');
   const { imageData, nftCollection } = useCollection(solanaAddress);
   const [albumSelected, setAlbumSelected] = useState<boolean>(false);
-
   const [selectedCollection, setSelectedCollection] = useState<string | null>(
     ''
   );
