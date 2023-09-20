@@ -19,13 +19,10 @@ const GalleryAlbum = ({
   albumSelected,
   selectedCollection,
 }: Props) => {
-  const nftCollectionName: string[] = [];
+  const nftCollectionName = nftCollection.map((data) => data.collection);
   const testData = useCollectionName(nftCollectionName);
-  console.log(nftCollectionName);
 
   const albumElement = nftCollection.map((data, index) => {
-    nftCollectionName.push(data.collection);
-
     const imageIncluded = imageData.some(
       (obj) =>
         obj.collection === data.collection &&

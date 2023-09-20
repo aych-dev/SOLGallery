@@ -15,7 +15,7 @@ app.get('/', async (req, res) => {
 
   while (page) {
     try {
-      const url = `https://rpc.helius.xyz/?api-key=${process.env.API_KEY}`;
+      const url = `https://rpc.helius.xyz/?api-key=${process.env.APIKEY}`;
       const { data } = await axios.post(url, {
         jsonrpc: '2.0',
         id: 'my-id',
@@ -44,15 +44,12 @@ app.get('/', async (req, res) => {
 });
 
 app.get('/collection-name', async (req, res) => {
-  const mintAccounts = Array.isArray(req.query.mintAccounts)
-    ? req.query.mintAccounts
-    : [req.query.mintAccounts];
   try {
-    const url = `https://api.helius.xyz/v0/token-metadata?api-key=${process.env.API_KEY}`;
+    const url = `https://api.helius.xyz/v0/token-metadata?api-key=${process.env.APIKEY}`;
     const { data } = await axios.post(
       url,
       {
-        mintAccounts: mintAccounts, // Use an array for the mintAccounts
+        mintAccounts: req.query.mintAccounts, // Use an array for the mintAccounts
         includeOffChain: true,
         disableCache: false,
       },
@@ -62,13 +59,9 @@ app.get('/collection-name', async (req, res) => {
         },
       }
     );
-
-    const { result } = await data;
-
-    res.json(result);
+    res.json(data);
   } catch (err) {
     console.error(err);
-    return res.status(500).json({ error: 'Internal server error!!' });
   }
 });
 
