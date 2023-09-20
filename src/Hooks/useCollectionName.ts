@@ -15,7 +15,7 @@ const useCollectionName = (mintAccounts: string[]) => {
             },
           }
         );
-        console.log(data);
+
         setTestData(data);
       } catch (err) {
         console.error((err as AxiosError).message);

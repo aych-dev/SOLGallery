@@ -21,6 +21,8 @@ const GalleryAlbum = ({
 }: Props) => {
   const nftCollectionName = nftCollection.map((data) => data.collection);
   const testData = useCollectionName(nftCollectionName);
+  console.log(testData);
+  console.log(nftCollection);
 
   const albumElement = nftCollection.map((data, index) => {
     const imageIncluded = imageData.some(
@@ -42,7 +44,10 @@ const GalleryAlbum = ({
         />
         <CardContent>
           <Typography variant='subtitle1' component='div'>
-            {imageIncluded ? data.image : 'No Name'}
+            {data.collection === nftCollectionName[index] &&
+            data.collection !== 'none'
+              ? 'Collection Name'
+              : 'No Name'}
           </Typography>
         </CardContent>
       </Card>
