@@ -1,8 +1,19 @@
 import { useEffect, useState } from 'react';
 import axios, { AxiosError } from 'axios';
 
+interface CollectionInformation {
+  account: string;
+  offChainMetaData: { metadata: { name: string } };
+}
+
+interface SpecificData {
+  account: string;
+  name: string;
+}
+
 const useCollectionName = (mintAccounts: string[]) => {
-  const [testData, setTestData] = useState([]);
+  const [testData, setTestData] = useState<CollectionInformation[]>([]);
+  const generalData: SpecificData[] = [];
 
   useEffect(() => {
     const getCollectionName = async () => {
@@ -26,7 +37,14 @@ const useCollectionName = (mintAccounts: string[]) => {
     }
   }, [mintAccounts]);
 
-  return testData;
+  testData.forEach((data) => {
+    generalData.push({
+      account: data.account,
+      name: data.offChainMetaData.metadata.name,
+    });
+  });
+
+  return generalData;
 };
 
 export default useCollectionName;
