@@ -3,17 +3,19 @@ import axios, { AxiosError } from 'axios';
 
 interface CollectionInformation {
   account: string;
-  offChainMetaData: { metadata: { name: string } };
+  offChainMetadata: { metadata: { name: string } | null };
 }
 
 interface SpecificData {
   account: string;
-  name: string;
+  name: string | null;
 }
 
 const useCollectionName = (mintAccounts: string[]) => {
   const [testData, setTestData] = useState<CollectionInformation[]>([]);
   const generalData: SpecificData[] = [];
+
+  console.log(testData);
 
   useEffect(() => {
     const getCollectionName = async () => {
@@ -38,10 +40,17 @@ const useCollectionName = (mintAccounts: string[]) => {
   }, [mintAccounts]);
 
   testData.forEach((data) => {
-    generalData.push({
-      account: data.account,
-      name: data.offChainMetaData.metadata.name,
-    });
+    if (data.offChainMetadata.metadata === null) {
+      generalData.push({
+        account: data.account,
+        name: 'none',
+      });
+    } else {
+      generalData.push({
+        account: data.account,
+        name: data.offChainMetadata.metadata.name,
+      });
+    }
   });
 
   return generalData;
