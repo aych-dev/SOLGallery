@@ -18,13 +18,9 @@ const Gallery = ({ imageData, selectedCollection }: Props) => {
             image={data.image}
           />
           <CardContent>
-            <Typography
-              variant='subtitle1'
-              component='div'
-              className='flex items-center justify-center text-purple-300'
-            >
+            <div className='flex items-center justify-center text-purple-300 font-bold font-sans'>
               {data.name}
-            </Typography>
+            </div>
           </CardContent>
         </Card>
       );

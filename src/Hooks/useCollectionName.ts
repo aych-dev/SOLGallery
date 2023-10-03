@@ -43,7 +43,7 @@ const useCollectionName = (mintAccounts: string[]) => {
     if (data.offChainMetadata.metadata === null) {
       generalData.push({
         account: data.account,
-        name: 'none',
+        name: 'No Collection Metadata =(',
       });
     } else {
       generalData.push({

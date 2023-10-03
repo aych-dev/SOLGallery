@@ -42,15 +42,12 @@ const GalleryAlbum = ({
           image={imageIncluded ? data.image : noImage}
         />
         <CardContent>
-          <Typography
-            component='div'
-            className='flex items-center justify-center text-purple-300'
-          >
+          <div className='flex items-center justify-center text-purple-300 font-bold font-sans'>
             {data.collection === nftCollection[index].collection &&
             data.collection !== 'none'
               ? generalData[index]?.name
-              : 'No Name'}
-          </Typography>
+              : 'Probably Degen Mints =)'}
+          </div>
         </CardContent>
       </Card>
     );
@@ -64,7 +61,7 @@ const GalleryAlbum = ({
           imageData={imageData}
         />
       ) : (
-        <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4'>
+        <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 '>
           {albumElement}
         </div>
       )}
