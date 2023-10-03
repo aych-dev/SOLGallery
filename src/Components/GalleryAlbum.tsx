@@ -34,7 +34,7 @@ const GalleryAlbum = ({
     return (
       <Card key={data.id}>
         <CardMedia
-          className='cursor-pointer'
+          className='cursor-pointer '
           onClick={() => handleClick(data.collection)}
           component='img'
           alt={`Album ${index}`}
@@ -42,7 +42,10 @@ const GalleryAlbum = ({
           image={imageIncluded ? data.image : noImage}
         />
         <CardContent>
-          <Typography variant='subtitle1' component='div'>
+          <Typography
+            component='div'
+            className='flex items-center justify-center text-purple-300'
+          >
             {data.collection === nftCollection[index].collection &&
             data.collection !== 'none'
               ? generalData[index]?.name

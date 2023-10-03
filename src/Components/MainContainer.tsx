@@ -16,8 +16,8 @@ const MainContainer = ({
   albumSelected,
   selectedCollection,
 }: Props) => {
-  return (
-    <div className='mt-4'>
+  return imageData.length > 1 ? (
+    <div className='mt-4 mb-4'>
       <GalleryAlbum
         albumSelected={albumSelected}
         selectedCollection={selectedCollection}
@@ -25,6 +25,14 @@ const MainContainer = ({
         imageData={imageData}
         handleClick={handleClick}
       />
+    </div>
+  ) : (
+    <div className='mt-4 mb-4'>
+      <div className='flex items-center justify-center mt-40 text-purple-300 text-xl'>
+        <h1>
+          Welcome To <span className='font-bold'>SOLGallery</span>
+        </h1>
+      </div>
     </div>
   );
 };

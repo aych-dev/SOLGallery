@@ -21,7 +21,7 @@ const Gallery = ({ imageData, selectedCollection }: Props) => {
             <Typography
               variant='subtitle1'
               component='div'
-              className='flex items-center justify-center'
+              className='flex items-center justify-center text-purple-300'
             >
               {data.name}
             </Typography>

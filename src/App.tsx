@@ -1,8 +1,9 @@
+import React from 'react';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
 import NavBar from './Components/NavBar';
 import Footer from './Components/Footer';
 import MainContainer from './Components/MainContainer';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
 import WalletInput from './Components/WalletInput';
 import useCollection from './Hooks/useCollection';
 import { useState } from 'react';
@@ -13,7 +14,7 @@ const darkTheme = createTheme({
   },
 });
 
-function App() {
+const App = () => {
   const [solanaAddress, setSolanaAddress] = useState<string>('');
   const { imageData, nftCollection } = useCollection(solanaAddress);
   const [albumSelected, setAlbumSelected] = useState<boolean>(false);
@@ -39,34 +40,24 @@ function App() {
   };
 
   return (
-    <>
-      <ThemeProvider theme={darkTheme}>
-        <CssBaseline />
-        <div>
-          <div>
-            <NavBar returnToHomePage={returnToHomePage} />
-          </div>
-          <div>
-            <div>
-              <WalletInput handleSubmit={handleSubmit} />
-            </div>
-            <div>
-              <MainContainer
-                selectedCollection={selectedCollection}
-                albumSelected={albumSelected}
-                handleClick={(collection) => handleClick(collection)}
-                nftCollection={nftCollection}
-                imageData={imageData}
-              />
-            </div>
-          </div>
-          <div>
-            <Footer />
-          </div>
-        </div>
-      </ThemeProvider>
-    </>
+    <ThemeProvider theme={darkTheme}>
+      <CssBaseline />
+      <div className='flex flex-col min-h-screen'>
+        <NavBar returnToHomePage={returnToHomePage} />
+        <main className='flex-grow'>
+          <WalletInput handleSubmit={handleSubmit} />
+          <MainContainer
+            selectedCollection={selectedCollection}
+            albumSelected={albumSelected}
+            handleClick={(collection) => handleClick(collection)}
+            nftCollection={nftCollection}
+            imageData={imageData}
+          />
+        </main>
+        <Footer />
+      </div>
+    </ThemeProvider>
   );
-}
+};
 
 export default App;

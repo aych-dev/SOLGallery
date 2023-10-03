@@ -18,7 +18,7 @@ const WalletInput = ({ handleSubmit }: Props) => {
               required
               id='solanaAddressInput'
               name='solanaAddressInput'
-              label='Enter Solana Address...'
+              label='Enter SOL Address...'
               type='text'
             />
           </div>
