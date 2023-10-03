@@ -10,6 +10,7 @@ interface Props {
   handleClick: (collection: string | null) => void;
   albumSelected: boolean;
   selectedCollection: string | null;
+  returnToHomePage: () => void;
 }
 
 const GalleryAlbum = ({
@@ -18,6 +19,7 @@ const GalleryAlbum = ({
   handleClick,
   albumSelected,
   selectedCollection,
+  returnToHomePage,
 }: Props) => {
   const nftCollectionName = nftCollection.map((data) => data.collection);
   const generalData = useCollectionName(nftCollectionName);
@@ -57,6 +59,7 @@ const GalleryAlbum = ({
     <>
       {albumSelected ? (
         <Gallery
+          returnToHomePage={() => returnToHomePage()}
           selectedCollection={selectedCollection}
           imageData={imageData}
         />

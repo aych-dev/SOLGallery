@@ -9,6 +9,7 @@ interface Props {
   albumSelected: boolean;
   selectedCollection: string | null;
   isLoading: boolean;
+  returnToHomePage: () => void;
 }
 
 const MainContainer = ({
@@ -18,6 +19,7 @@ const MainContainer = ({
   albumSelected,
   selectedCollection,
   isLoading,
+  returnToHomePage,
 }: Props) => {
   return (
     <>
@@ -28,6 +30,7 @@ const MainContainer = ({
       ) : imageData.length > 1 ? (
         <div className='mt-4 mb-4'>
           <GalleryAlbum
+            returnToHomePage={() => returnToHomePage()}
             albumSelected={albumSelected}
             selectedCollection={selectedCollection}
             nftCollection={nftCollection}

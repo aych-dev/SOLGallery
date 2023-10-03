@@ -7,6 +7,7 @@ import MainContainer from './Components/MainContainer';
 import WalletInput from './Components/WalletInput';
 import useCollection from './Hooks/useCollection';
 import { useState } from 'react';
+import HomeButton from './Components/HomeButton';
 
 const darkTheme = createTheme({
   palette: {
@@ -47,6 +48,7 @@ const App = () => {
         <main className='flex-grow'>
           <WalletInput handleSubmit={handleSubmit} />
           <MainContainer
+            returnToHomePage={() => returnToHomePage()}
             isLoading={isLoading}
             selectedCollection={selectedCollection}
             albumSelected={albumSelected}
