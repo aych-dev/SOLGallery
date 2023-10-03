@@ -1,5 +1,5 @@
 import { NftImage, nftCollections } from '../Hooks/useCollection';
-import { Card, CardContent, CardMedia, Typography } from '@mui/material';
+import { Card, CardContent, CardMedia } from '@mui/material';
 import noImage from '../Images/noImage.png';
 import Gallery from './Gallery';
 import useCollectionName from '../Hooks/useCollectionName';

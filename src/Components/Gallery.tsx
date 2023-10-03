@@ -1,4 +1,4 @@
-import { Card, CardContent, CardMedia, Typography } from '@mui/material';
+import { Card, CardContent, CardMedia } from '@mui/material';
 import { NftImage } from '../Hooks/useCollection';
 
 interface Props {
