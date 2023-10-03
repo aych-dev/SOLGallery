@@ -16,7 +16,7 @@ const darkTheme = createTheme({
 
 const App = () => {
   const [solanaAddress, setSolanaAddress] = useState<string>('');
-  const { imageData, nftCollection } = useCollection(solanaAddress);
+  const { imageData, nftCollection, isLoading } = useCollection(solanaAddress);
   const [albumSelected, setAlbumSelected] = useState<boolean>(false);
   const [selectedCollection, setSelectedCollection] = useState<string | null>(
     ''
@@ -47,6 +47,7 @@ const App = () => {
         <main className='flex-grow'>
           <WalletInput handleSubmit={handleSubmit} />
           <MainContainer
+            isLoading={isLoading}
             selectedCollection={selectedCollection}
             albumSelected={albumSelected}
             handleClick={(collection) => handleClick(collection)}

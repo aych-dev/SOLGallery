@@ -27,15 +27,18 @@ const useCollection = (solanaAddress: string) => {
   const [testData, setTestData] = useState<CollectionData[]>([]);
   const imageData: NftImage[] = [];
   const nftCollection: nftCollections[] = [];
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const getCollection = async () => {
       try {
+        setIsLoading(true);
         const { data } = await axios.get(`http://localhost:8000/`, {
           params: {
             ownerAddress: solanaAddress,
           },
         });
+        setIsLoading(false);
         setTestData(data);
       } catch (err) {
         console.error((err as AxiosError).message);
@@ -88,7 +91,7 @@ const useCollection = (solanaAddress: string) => {
     });
   }
 
-  return { imageData, nftCollection };
+  return { imageData, nftCollection, isLoading };
 };
 
 export default useCollection;
