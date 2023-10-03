@@ -7,7 +7,6 @@ import MainContainer from './Components/MainContainer';
 import WalletInput from './Components/WalletInput';
 import useCollection from './Hooks/useCollection';
 import { useState } from 'react';
-import HomeButton from './Components/HomeButton';
 
 const darkTheme = createTheme({
   palette: {
