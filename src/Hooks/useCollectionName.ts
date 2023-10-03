@@ -21,7 +21,7 @@ const useCollectionName = (mintAccounts: string[]) => {
     const getCollectionName = async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:8000/collection-name`,
+          `https://cryptic-anchorage-73113-c632759ca232.herokuapp.com/collection-name`,
           {
             params: {
               mintAccounts: mintAccounts,

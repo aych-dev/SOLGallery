@@ -9,7 +9,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.get('/', async (req, res) => {
+app.get('/solana-address', async (req, res) => {
   let page = 1;
   let assetList = [];
 

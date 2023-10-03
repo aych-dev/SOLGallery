@@ -33,11 +33,14 @@ const useCollection = (solanaAddress: string) => {
     const getCollection = async () => {
       try {
         setIsLoading(true);
-        const { data } = await axios.get(`http://localhost:8000/`, {
-          params: {
-            ownerAddress: solanaAddress,
-          },
-        });
+        const { data } = await axios.get(
+          `https://cryptic-anchorage-73113-c632759ca232.herokuapp.com//solana-address`,
+          {
+            params: {
+              ownerAddress: solanaAddress,
+            },
+          }
+        );
         setIsLoading(false);
         setTestData(data);
       } catch (err) {
