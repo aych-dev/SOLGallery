@@ -1,27 +1,25 @@
-# React + TypeScript + Vite
+# SOLGallery: Explore NFTs Owned by a Solana Wallet
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+SOLGallery is a web application that allows users to view all the NFTs owned by a Solana wallet. Users can input a Solana wallet address, and the application will fetch and display the NFTs associated with that address. The application is built using React, Helius API for Solana integration, TypeScript, Tailwind CSS, and Material UI.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **NFT Display**: Users can input a Solana wallet address and view all the NFTs owned by that wallet.
 
-## Expanding the ESLint configuration
+- **Interactive Interface**: The application offers an interactive and visually appealing user interface to enhance the user experience.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Helius API Integration**: The application leverages the Helius API to fetch NFT data and interact with the Solana blockchain, providing real-time information about the NFTs associated with the provided wallet address.
 
-- Configure the top-level `parserOptions` property like this:
+## Technologies Used
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+- **React**: React is used to build the frontend of the application, providing a dynamic and interactive user interface.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- **Helius API**: The Helius API is integrated to fetch NFT data and interact with the Solana blockchain, providing up-to-date information about the NFTs associated with the provided wallet address.
+
+- **TypeScript**: The project is primarily written in TypeScript, a statically typed superset of JavaScript that improves code maintainability and helps catch errors during development.
+
+- **Tailwind CSS**: Tailwind CSS is used for efficient styling and layout of the application, allowing for rapid development.
+
+- **Material UI**: Material UI is utilized for creating consistent and visually appealing UI components and designs.
+
+
